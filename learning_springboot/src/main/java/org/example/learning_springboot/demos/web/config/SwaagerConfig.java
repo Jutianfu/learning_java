@@ -31,4 +31,4 @@ public class SwaagerConfig {
                         .url("https://springshop.wiki.github.org.docs"));
     }
     }
-}
+
