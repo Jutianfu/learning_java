@@ -16,17 +16,25 @@
 
 package org.example.learning_springboot.demos.web;
 
+import com.baomidou.mybatisplus.extension.api.R;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
+import lombok.AllArgsConstructor;
+import org.example.learning_springboot.demos.web.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
-@Controller
+@RestController
+@AllArgsConstructor
 public class BasicController {
+
+    @Autowired
+    private TestService testService;
 
     // http://127.0.0.1:8080/hello?name=lisi
     @RequestMapping("/hello")
@@ -64,4 +72,11 @@ public class BasicController {
         user.setName("zhangsan");
         user.setAge(18);
     }
+
+    @PostMapping("/test")
+    @Operation(summary = "测试接口",description = "测试")
+    public R<String> test() {
+        return R.ok(testService.getTest());
+    }
+
 }

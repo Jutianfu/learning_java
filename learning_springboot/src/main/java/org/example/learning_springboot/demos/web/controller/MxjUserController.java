@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author 26523
+ */
 @RestController
 @RequestMapping("/mxj")
 public class MxjUserController {
@@ -17,6 +20,7 @@ public class MxjUserController {
     @GetMapping("")
     public List<MxjUser> getMxjUserList(){
         List<MxjUser> list = userService.list();
+        MxjUser user =new MxjUser();
         return list;
     }
 }
